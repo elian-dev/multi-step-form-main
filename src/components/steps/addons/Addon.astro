@@ -1,0 +1,68 @@
+---
+interface Pros {
+    title: string;
+    description: string;
+    price: string;
+}
+const { title, description, price } = Astro.props;
+---
+<label class="addon" for={title}>
+    <div class="addon__control">
+        <input class="addon__control--input" type="checkbox" name={title} id={title}>
+        <span class="addon__control--checkmark"></span>
+    </div>
+
+    <div class="addon__content">
+        <h3 class="addon__content--title">{title}</h3>
+        <p class="addon__content--description">{description}</p>
+    </div>
+
+    <div class="addon__price">
+        <p class="addon__price--legend">{price}</p>
+    </div>
+</label>
+
+<style lang="scss">
+    .addon {
+        display: flex;
+        align-items: center;
+        border: 1px solid var(--light-grey);
+        border-radius: 8px;
+        padding: 0.5rem;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        position: relative;
+        margin-top: 1rem;
+
+        &__control {
+            padding: 1rem;
+        }
+
+        &__content {
+            padding: 0.5rem;
+            &--title {
+                color: var(--denim);
+                margin: 0;
+                padding: 0;
+            }
+
+            &--description {
+                color: var(--grey);
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+        &__price {
+            padding: 0.5rem;
+            &--legend {
+                color: var(--purple);
+                margin: 0;
+                padding: 0;
+            }
+        }
+    }
+</style>

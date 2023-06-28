@@ -1,9 +1,10 @@
 ---
-
+import Resume from "./Resume.astro";
 ---
 <section class="summary">
     <h2 class="summary__title">Finishing up</h2>
     <p class="summary__legend">Double-check everything looks OK before confirming.</p>
+    <Resume />
 </section>
 
 <style lang="scss">
@@ -12,6 +13,7 @@
         width: max-content;
         &__title {
             font-size: var(--heading);
+            color: var(--denim);
             margin: 0;
             padding: 0;
         }

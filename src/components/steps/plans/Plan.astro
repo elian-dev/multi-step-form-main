@@ -1,0 +1,46 @@
+---
+interface Props {
+    title: string;
+    price: number;
+    img: string;
+    category: string;
+    free: string;
+}
+
+const { title, price, img, category, free } = Astro.props;
+---
+<div class="plan">
+    <img class="plan__img" src={img} alt="" srcset="">
+    <h3 class="plan__title">{title}</h3>
+    <p class="plan__price">${price}{category == 'monthly' ? '/mo' : '/yr'}</p>
+    <p class="plan__free">{free}</p>
+</div>
+
+<style lang="scss">
+    .plan {
+        border: 1px solid var(--grey);
+        border-radius: 8px;
+        padding: 0.5rem 2rem 0.5rem 0.5rem;
+        &__img {
+            padding-bottom: 2rem;
+        }
+        &__title {
+            font-size: 1rem;
+            color: var(--denim);
+            margin: 0;
+            padding: 0;
+        }
+        &__price {
+            font-size: var(--body-m);
+            color: var(--grey);
+            margin: 0;
+            padding: 5px 0;
+        }
+        &__free {
+            font-size: var(--body-s);
+            color: var(--denim);
+            margin: 0;
+            padding: 0;
+        }
+    }
+</style>

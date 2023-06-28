@@ -4,12 +4,12 @@
 
 	const STEPS = [
 		{	
-			id: 1,
+			id: 2,
 			step: 'Your info',
 			component: 'Form',
 		},
 		{	
-			id: 2,
+			id: 1,
 			step: 'Select plan',
 			component: 'Plans',
 		},
@@ -37,6 +37,7 @@
 <style lang="scss">
 	.main-card {
 		width: 100%;
+		max-width: 900px;
 		height: 100%;
 		background-color: var(--white);
 		border-radius: 15px;
@@ -66,7 +67,7 @@
 		});
 	}
 
-	function toggleSection(index) {
+	function toggleSection(index: number) {
 		document.querySelectorAll('.steps__item').forEach((section) => {
 			section.classList.remove('steps__item--active');
 		});

@@ -4,7 +4,7 @@ const data = [
         name: 'Arcade',
         category: 'monthly',
         price: 9,
-        image: './assets/icon-arcade.svg',
+        image: '/assets/images/icon-arcade.svg',
         desc: ``,
         free: '',
         addons: [
@@ -33,7 +33,7 @@ const data = [
         name: 'Advanced',
         category: 'monthly',
         price: 12,
-        image: './images/advanced.jpg',
+        image: '/assets/images/icon-advanced.svg',
         desc: ``,
         free: '',
         addons: [
@@ -62,7 +62,7 @@ const data = [
         name: 'Pro',
         category: 'monthly',
         price: 15,
-        image: './images/pro.jpg',
+        image: '/assets/images/icon-pro.svg',
         desc: ``,
         free: '',
         addons: [
@@ -91,7 +91,7 @@ const data = [
         name: 'Arcade',
         category: 'yearly',
         price: 99,
-        image: './images/arcade.jpg',
+        image: '/assets/images/icon-arcade.svg',
         desc: ``,
         free: '2 months free',
         addons: [
@@ -120,7 +120,7 @@ const data = [
         name: 'Advanced',
         category: 'yearly',
         price: 120,
-        image: './images/advanced.jpg',
+        image: '/assets/images/icon-advanced.svg',
         desc: ``,
         free: '2 months free',
         addons: [
@@ -149,7 +149,7 @@ const data = [
         name: 'Pro',
         category: 'yearly',
         price: 150,
-        image: './images/pro.jpg',
+        image: '/assets/images/icon-pro.svg',
         desc: ``,
         free: '2 months free',
         addons: [
@@ -174,3 +174,5 @@ const data = [
         ]
     },
 ]
+
+export default data;
