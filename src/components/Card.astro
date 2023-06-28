@@ -1,63 +1,78 @@
 ---
-export interface Props {
-	title: string;
-	body: string;
-	href: string;
-}
+	import StepWrapper from './steps/StepWrapper.astro';
+	import Bar from './sidebar/Bar.astro';
 
-const { href, title, body } = Astro.props;
+	const STEPS = [
+		{	
+			id: 1,
+			step: 'Your info',
+			component: 'Form',
+		},
+		{	
+			id: 2,
+			step: 'Select plan',
+			component: 'Plans',
+		},
+		{
+			id: 3,
+			step: 'Add-ons',
+			component: 'Addons',
+		},
+		{
+			id: 4,
+			step: 'Summary',
+			component: 'Summary',
+		},
+	];
 ---
 
-<li class="link-card">
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
-	</a>
-</li>
-<style>
-	.link-card {
-		list-style: none;
-		display: flex;
-		padding: 0.25rem;
-		background-color: white;
-		background-image: none;
-		background-size: 400%;
-		border-radius: 0.6rem;
-		background-position: 100%;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-	}
+<section class="main-card">
+	<!-- Sidebar -->
+	<Bar steps={STEPS} />
 
-	.link-card > a {
+	<!-- Steps -->
+	<StepWrapper steps={STEPS} />
+</section>
+
+<style lang="scss">
+	.main-card {
 		width: 100%;
-		text-decoration: none;
-		line-height: 1.4;
-		padding: 1rem 1.3rem;
-		border-radius: 0.35rem;
-		color: #111;
-		background-color: white;
-		opacity: 0.8;
-	}
-	h2 {
-		margin: 0;
-		font-size: 1.25rem;
-		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	p {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
-		color: #444;
-	}
-	.link-card:is(:hover, :focus-within) {
-		background-position: 0;
-		background-image: var(--accent-gradient);
-	}
-	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent));
+		height: 100%;
+		background-color: var(--white);
+		border-radius: 15px;
+		padding: 1rem;
+		display: flex;
 	}
 </style>
+
+<script>
+	function toggleStep() {
+		const steps = document.querySelectorAll('.step');
+		steps.forEach((step, index) => {
+			step.addEventListener('click', () => {
+				event.preventDefault();
+
+				// Remove active class from all steps
+				steps.forEach((step) => {
+					step.classList.remove('step--active');
+					step.querySelector('.step__tip').classList.remove('step__tip--active');
+				});
+
+				step.querySelector('.step__tip').classList.toggle('step__tip--active');
+
+				// Add active class to section
+				toggleSection(index);
+			});
+		});
+	}
+
+	function toggleSection(index) {
+		document.querySelectorAll('.steps__item').forEach((section) => {
+			section.classList.remove('steps__item--active');
+		});
+
+		document.querySelectorAll('.steps__item')[index].classList.add('steps__item--active');
+	}
+
+	document.addEventListener('DOMContentLoaded', toggleStep);
+</script>

@@ -1,0 +1,39 @@
+---
+import Item from './Item.astro'
+interface Props {
+  steps: [
+    {
+        step: string,
+    }
+  ];
+}
+
+const { steps } = Astro.props
+---
+<section class="bar">
+    <ul class="bar__ul">
+        {
+            steps.map((step, index) => (
+                <Item step={step.step} index={index} />
+            ))
+        }
+    </ul>
+</section>
+
+<style lang="scss">
+    .bar {
+        width:  35%;
+        min-width: fit-content;
+        padding-right: 1rem;
+        background-color: var(--purple);
+        border-radius: 15px;
+        display: flex;
+
+        &__ul {
+            display: flex;
+            flex-direction: column;
+            list-style: none;
+            padding: 1rem 0 0 2.5rem;
+        }
+    }
+</style>

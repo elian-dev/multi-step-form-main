@@ -1,0 +1,53 @@
+---
+import Form from "./form/Form.astro";
+import Plans from "./plans/Plans.astro";
+import Addons from "./addons/Addons.astro";
+import Summary from "./summary/Summary.astro";
+
+const { steps } = Astro.props;
+console.log(steps);
+
+---
+<section class="steps">
+    {
+        steps.map((step: any) => (
+            <div class={`steps__item ${step.id === 1 ? 'steps__item--active' : ''}`}>
+                {
+                    step.component === 'Form' && <Form />
+                }
+                {
+                    step.component === 'Plans' && <Plans />
+                }
+                {
+                    step.component === 'Addons' && <Addons />
+                }
+                {
+                    step.component === 'Summary' && <Summary />
+                }
+            </div>
+        ))
+    }
+</section>
+
+<style lang="scss">
+    .steps {
+        &__title {
+            font-size: var(--heading);
+            margin: 0;
+            padding: 0;
+        }
+
+        &__legend {
+            font-size: var(--body-l);
+            color: var(--grey);
+            line-height: 20px;
+        }
+
+        &__item {
+            display: none;
+            &--active {
+                display: block;
+            }
+        }
+    }
+</style>

@@ -1,0 +1,51 @@
+---
+interface Props {
+    name: string;
+    type: string;
+    placeholder: string;
+    label: string;
+    value?: string;
+}
+
+const { name, type, placeholder, label, value } = Astro.props;
+---
+{
+    type === 'textarea' ? (
+        <div class="input__group">
+            <label class="input__group__label" for={name}>{label}</label>
+            <textarea class="input__group__input" name={name} id="" cols="30" rows="20" placeholder={placeholder}>{value}</textarea>
+        </div>
+    ) : (
+        <div class="input__group">
+            <label class="input__group__label" for={name}>{label}</label>
+            <input class="input__group__input" type={type} name={name} placeholder={placeholder} value={value? value : ''} />
+        </div>
+    )
+}
+
+<style lang="scss">
+    .input {
+        &__group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1rem;
+            width: inherit;
+
+            &__label {
+                font-size: var(--body-m);
+                color: var(--denim);
+                margin-bottom: 8px;
+            }
+
+            &__input {
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
+                height: 48px;
+                padding-left: 0.5rem;
+                font-size: 1rem;
+                color: var(--grey);
+                font-weight: 500;
+            }
+        }
+    }
+</style>

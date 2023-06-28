@@ -20,17 +20,67 @@ const { title } = Astro.props;
 		<slot />
 	</body>
 </html>
-<style is:global>
+<style lang="scss" is:global>
 	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
+		/* Color styles */
+		--b-g: rgba(239, 245, 255, 1);
+		--border-color: rgba(214, 217, 230, 1);
+		--denim: rgba(2, 41, 89, 1);
+		--grey: rgba(150, 153, 170, 1);
+		--light-blue: rgba(171, 188, 255, 1);
+		--light-grey: rgba(214, 217, 230, 1);
+		--orange: rgba(255, 175, 126, 1);
+		--pink: rgba(249, 129, 142, 1);
+		--purple: rgba(72, 62, 255, 1);
+		--red-errors: rgba(238, 55, 74, 1);
+		--sky-blue: rgba(190, 226, 253, 1);
+		--very-light--grey: rgba(248, 249, 255, 1);
+		--white: rgba(255, 255, 255, 1);
+
+		/* Text-size styles */
+		/* base size: body--l (16px) */
+		--heading: 2rem;
+		--body-l: 1rem;
+		--body-m: 0.88rem;
+		--body-s: 0.75rem;
 	}
+
+	@font-face {
+		font-family: 'Ubuntu';
+		src: url('/assets/fonts/Ubuntu-Bold.ttf') format('truetype');
+		font-weight: bold;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: 'Ubuntu';
+		src: url('/assets/fonts/Ubuntu-Medium.ttf') format('truetype');
+		font-weight: 500;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: 'Ubuntu';
+		src: url('/assets/fonts/Ubuntu-Regular.ttf') format('truetype');
+		font-weight: normal;
+		font-style: normal;
+	}
+
 	html {
-		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
+		font-family: 'Ubuntu', sans-serif;
+		background-color: var(--b-g);
 	}
 	code {
 		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
 			Bitstream Vera Sans Mono, Courier New, monospace;
 	}
+	body {
+		background-color: var(--b-g);
+	}
+	main {
+		margin: auto;
+		padding: 1.5rem;
+		max-width: fit-content;
+	}
+
 </style>
