@@ -25,11 +25,14 @@ const { name, type, placeholder, label, value } = Astro.props;
 
 <style lang="scss">
     .input {
+        
         &__group {
             display: flex;
             flex-direction: column;
             margin-bottom: 1rem;
             width: inherit;
+
+            position: relative;
 
             &__label {
                 font-size: var(--body-m);
@@ -45,6 +48,15 @@ const { name, type, placeholder, label, value } = Astro.props;
                 font-size: 1rem;
                 color: var(--grey);
                 font-weight: 500;
+
+                &-error {
+                    border: 1px solid var(--red-errors);
+                }
+            }
+
+            &__input:focus {
+                outline: none;
+                border: 1px solid var(--purple);
             }
         }
     }

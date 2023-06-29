@@ -4,12 +4,12 @@
 
 	const STEPS = [
 		{	
-			id: 2,
+			id: 1,
 			step: 'Your info',
 			component: 'Form',
 		},
 		{	
-			id: 1,
+			id: 2,
 			step: 'Select plan',
 			component: 'Plans',
 		},
@@ -36,44 +36,19 @@
 
 <style lang="scss">
 	.main-card {
-		width: 100%;
-		max-width: 900px;
-		height: 100%;
+		width: 800px;
+		height: 500px;
 		background-color: var(--white);
 		border-radius: 15px;
 		padding: 1rem;
 		display: flex;
+		
+		@media screen and (max-width: 500px) {
+			flex-direction: column;
+			width: 100%;
+			height: 100%;
+			background-color: transparent;
+			padding: 0;
+		}
 	}
 </style>
-
-<script>
-	function toggleStep() {
-		const steps = document.querySelectorAll('.step');
-		steps.forEach((step, index) => {
-			step.addEventListener('click', () => {
-				event.preventDefault();
-
-				// Remove active class from all steps
-				steps.forEach((step) => {
-					step.classList.remove('step--active');
-					step.querySelector('.step__tip').classList.remove('step__tip--active');
-				});
-
-				step.querySelector('.step__tip').classList.toggle('step__tip--active');
-
-				// Add active class to section
-				toggleSection(index);
-			});
-		});
-	}
-
-	function toggleSection(index: number) {
-		document.querySelectorAll('.steps__item').forEach((section) => {
-			section.classList.remove('steps__item--active');
-		});
-
-		document.querySelectorAll('.steps__item')[index].classList.add('steps__item--active');
-	}
-
-	document.addEventListener('DOMContentLoaded', toggleStep);
-</script>

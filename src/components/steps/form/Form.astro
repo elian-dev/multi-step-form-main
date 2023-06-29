@@ -1,21 +1,22 @@
 ---
 import Input from "./Input.astro";
-
 ---
-<section class="form">
+<section class="section form">
     <h2 class="form__title">Personal info</h2>
     <p class="form__legend">Please provide your name, email address, and phone number.</p>
-    <form class="form__section">
+    <form class="form__section" method="POST" novalidate>
         <Input name="name" type="text" placeholder="e.g.Stephen king" label="Name" />
-        <Input name="email" type="text" placeholder="e.g.stephenking@lorem.com" label="Email address" />
+        <Input name="email" type="email" placeholder="e.g.stephenking@lorem.com" label="Email address" />
         <Input name="phone" type="number" placeholder="e.g.+1 234 567 890" label="Phone number" />
+
+        <div class="section__next--container">
+            <input type="submit" class="section__next" value="Next Step">
+        </div>
     </form>
 </section>
 
 <style lang="scss">
     .form {
-        padding: 0 2rem;
-        width: max-content;
         &__title {
             font-size: var(--heading);
             margin: 0;
@@ -35,3 +36,17 @@ import Input from "./Input.astro";
         }
     }
 </style>
+
+<script >
+    import { FormValidator } from "../../utils/FormValidator.js";
+
+    const form = document.querySelector('.form__section');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(form as HTMLFormElement);
+        const data = Object.fromEntries(formData.entries());
+
+        FormValidator(formData, data);
+    })
+</script>

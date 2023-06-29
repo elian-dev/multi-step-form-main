@@ -1,16 +1,18 @@
 ---
 import Resume from "./Resume.astro";
 ---
-<section class="summary">
+<section class="section summary">
     <h2 class="summary__title">Finishing up</h2>
     <p class="summary__legend">Double-check everything looks OK before confirming.</p>
     <Resume />
+
+    <div class="section__next--container">
+        <input type="submit" class="section__next" value="Next Step">
+    </div>
 </section>
 
 <style lang="scss">
     .summary {
-        padding: 0 2rem;
-        width: max-content;
         &__title {
             font-size: var(--heading);
             color: var(--denim);
@@ -31,3 +33,13 @@ import Resume from "./Resume.astro";
         }
     }
 </style>
+
+<script>
+    import { nextStep } from "../../utils/nextStep";
+
+    const NextStep = document.querySelectorAll(".section__next");
+    NextStep[3].addEventListener("click", () => {
+        nextStep(4);
+    });
+
+</script>

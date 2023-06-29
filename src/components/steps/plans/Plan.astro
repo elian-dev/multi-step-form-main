@@ -42,5 +42,33 @@ const { title, price, img, category, free } = Astro.props;
             margin: 0;
             padding: 0;
         }
+
+        @media screen and (max-width: 500px) {
+            padding: 0.5rem 1rem 0.5rem 0.5rem;
+            display: grid;
+            grid-template-columns: 20% 2fr;
+            grid-template-rows: 1fr 1fr 1fr;
+
+            align-items: center;
+
+            grid-template-areas: 
+                "img title" 
+                "img price" 
+                "img free"
+            ;
+            &__img {
+                padding-bottom: 0;
+                grid-area: img;
+            }
+
+            &__title {
+                padding: 0;
+                grid-area: title;
+            }
+
+            &__price {
+                grid-area: price;
+            }
+		}
     }
 </style>

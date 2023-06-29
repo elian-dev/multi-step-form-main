@@ -1,7 +1,7 @@
 ---
 import Addon from "./Addon.astro";
 ---
-<section class="addons">
+<section class="section addons">
     <h2 class="addons__title">Pick add-ons</h2>
     <p class="addons__legend">Add-ons help enhance your gaming experience.</p>
 
@@ -22,11 +22,15 @@ import Addon from "./Addon.astro";
             price="+$2/mo"
         />
     </div>
+
+    <div class="section__next--container">
+        <input type="submit" class="section__next" value="Next Step">
+    </div>
+
 </section>
 
 <style lang="scss">
     .addons {
-        padding: 0 2rem;
         &__title {
             font-size: var(--heading);
             color: var(--denim);
@@ -52,3 +56,12 @@ import Addon from "./Addon.astro";
     }
 
 </style>
+<script>
+    import { nextStep } from "../../utils/nextStep";
+
+    const NextStep = document.querySelectorAll(".section__next");
+    NextStep[2].addEventListener("click", () => {
+        nextStep(3);
+    });
+
+</script>

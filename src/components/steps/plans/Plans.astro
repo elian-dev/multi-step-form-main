@@ -1,9 +1,9 @@
 ---
 import Plan from "./Plan.astro";
-
+// Fetch data from data.js
 import Data from "../../data.js";
 ---
-<section class="plans-section">
+<section class="section plans-section">
     <h2 class="plans-section__title">Select your plan</h2>
     <p class="plans-section__legend">You have the option of monthly or yearly billing.</p>
 
@@ -29,13 +29,15 @@ import Data from "../../data.js";
         </label>
         <span>Yearly</span>
     </div>
+
+    <div class="section__next--container">
+        <input type="submit" class="section__next" value="Next Step">
+    </div>
     
 </section>
 
 <style lang="scss">
     .plans-section {
-        padding: 0 2rem;
-        width: max-content;
         &__title {
             font-size: var(--heading);
             margin: 0;
@@ -61,6 +63,10 @@ import Data from "../../data.js";
 
         margin-top: 2rem;
         width: 100%;
+
+        @media screen and (max-width: 500px) {
+            grid-template-columns: repeat(1, 1fr);
+		}
     }
     .switch-plan {
         display: flex;
@@ -135,3 +141,15 @@ import Data from "../../data.js";
         }
     }
 </style>
+
+<script>
+    import { nextStep } from "../../utils/nextStep";
+
+    const switchPlan = document.querySelector(".switch-plan__input");
+
+    const NextStep = document.querySelectorAll(".section__next");
+    NextStep[1].addEventListener("click", () => {
+        nextStep(2);
+    });
+
+</script>

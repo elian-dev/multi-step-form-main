@@ -22,9 +22,8 @@ const { steps } = Astro.props
 
 <style lang="scss">
     .bar {
-        width:  35%;
-        min-width: fit-content;
-        padding-right: 1rem;
+        width: fit-content;
+        padding-right: 2rem;
         background-color: var(--purple);
         border-radius: 15px;
         display: flex;
@@ -35,5 +34,22 @@ const { steps } = Astro.props
             list-style: none;
             padding: 1rem 0 0 2.5rem;
         }
+
+        @media screen and (max-width: 500px) {
+            width: auto;
+            height: 140px;
+            background: url('/assets/images/bg-sidebar-mobile.svg') no-repeat;
+            background-size: cover;
+            border-radius: 0;
+            padding: 2rem 3rem;
+            margin: 0;
+            &__ul {
+                width: 75%;
+                flex-direction: row;
+                justify-content: space-evenly;
+                margin: 0 auto;
+                padding: 0;
+            }
+		}
     }
 </style>
