@@ -7,7 +7,8 @@ import Resume from "./Resume.astro";
     <Resume />
 
     <div class="section__next--container">
-        <input type="submit" class="section__next" value="Next Step">
+        <a class="section__back section__back--summary" href="#">Go Back</a>
+        <input type="submit" class="section__next section__next--confirm" value="Confirm">
     </div>
 </section>
 
@@ -32,6 +33,13 @@ import Resume from "./Resume.astro";
             width: 100%;
         }
     }
+
+    .section__next--confirm {
+        background-color: var(--purple) !important;
+        &:hover {
+            background-color: #928CFF !important;
+        }
+    }
 </style>
 
 <script>
@@ -42,4 +50,9 @@ import Resume from "./Resume.astro";
         nextStep(4);
     });
 
+    const goBack = document.querySelector('.section__back--summary');
+    goBack.addEventListener('click', (e) => {
+        e.preventDefault();
+        nextStep(2);
+    })
 </script>

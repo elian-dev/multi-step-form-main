@@ -23,6 +23,7 @@ import Data from "../../data.js";
     </div>
 
     <div class="section__next--container">
+        <a class="section__back section__back--addons" href="#">Go Back</a>
         <input name="addons-next" type="submit" class="section__next" value="Next Step">
     </div>
 
@@ -70,5 +71,12 @@ import Data from "../../data.js";
             nextStep(3);
         }
     });
+
+
+    const goBack = document.querySelector('.section__back--addons');
+    goBack.addEventListener('click', (e) => {
+        e.preventDefault();
+        nextStep(1);
+    })
 
 </script>

@@ -6,7 +6,7 @@ interface Props {
 
 const {index, step,} = Astro.props;
 ---
-<a class="step" href={`#step${index + 1}`}>
+<a class="step" href={`#step${index + 1}`}  style=`${step == 'Thanks' ? 'display: none' : ''}`>
     <div class=`step__tip ${index === 0 ? 'step__tip--active' : '' }`>{index + 1}</div>
     <div class="step__content">
         <h1 class="step__title"> Step {index + 1}</h1>

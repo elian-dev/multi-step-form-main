@@ -3,6 +3,7 @@ import Form from "./form/Form.astro";
 import Plans from "./plans/Plans.astro";
 import Addons from "./addons/Addons.astro";
 import Summary from "./summary/Summary.astro";
+import Thanks from "./Thanks.astro";
 
 const { steps } = Astro.props;
 
@@ -22,6 +23,9 @@ const { steps } = Astro.props;
                 }
                 {
                     step.component === 'Summary' && <Summary />
+                }
+                {
+                    step.component === 'thanks' && <Thanks />
                 }
             </div>
         ))
@@ -49,6 +53,8 @@ const { steps } = Astro.props;
             -moz-animation: fadeIn 1s;
             -o-animation: fadeIn 1s;
             -ms-animation: fadeIn 1s;
+            height: 100%;
+            box-sizing: border-box;
             &--active {
                 display: block;
                 
