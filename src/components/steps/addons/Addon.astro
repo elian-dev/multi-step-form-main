@@ -23,6 +23,55 @@ const { title, description, price } = Astro.props;
 </label>
 
 <style lang="scss">
+
+    .addon__control {
+        position: relative;
+    }
+
+    .addon__control--input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+
+    .addon__control--checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 20px;
+        width: 20px;
+        background-color: transparent;
+        border-radius: 4px;
+        border: 1px solid var(--light-grey);
+    }
+
+    .addon__control--input:checked ~ .addon__control--checkmark {
+        background-color: var(--purple);
+        border-color: var(--purple);
+        transition: all 0.3s ease-in-out;
+    }
+
+    // Select parent .addon when input is checked
+    .addon:has(.addon__control--input:checked) {
+        background-color: var(--very-light-grey);
+        border-color: var(--purple);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .addon__control--checkmark:after {
+        // SVG checkmark icon
+        content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 9l3 3 6-6'/%3E%3C/svg%3E");
+        display: none;
+        padding-right: 0.1rem;
+    }
+
+    .addon__control--input:checked ~ .addon__control--checkmark:after {
+        display: block;
+        transition: all 0.3s ease-in-out;
+    }
+    
     .addon {
         display: flex;
         align-items: center;
