@@ -12,19 +12,19 @@ const data = [
                 id: 1,
                 name: 'Online service',
                 desc: 'Access to multiplayer games',
-                time: '1 month'
+                time: '$1/mo'
             },
             {
                 id: 2,
                 name: 'Larger storage',
                 desc: 'Extra 1TB of cloud save',
-                time: '2 month'
+                time: '$2/mo'
             },
             {
                 id: 3,
                 name: 'Customizable profile',
                 desc: 'Custom theme on your profile',
-                time: '2 month'
+                time: '$2/mo'
             },
         ]       
     },
@@ -70,19 +70,19 @@ const data = [
                 id: 1,
                 name: 'Online service',
                 desc: 'Access to multiplayer games',
-                time: '1 month'
+                time: '$1/mo'
             },
             {
                 id: 2,
                 name: 'Larger storage',
                 desc: 'Extra 1TB of cloud save',
-                time: '2 month'
+                time: '$2/mo'
             },
             {
                 id: 3,
                 name: 'Customizable profile',
                 desc: 'Custom theme on your profile',
-                time: '2 month'
+                time: '$2/mo'
             },
         ] 
     },
@@ -99,19 +99,19 @@ const data = [
                 id: 1,
                 name: 'Online service',
                 desc: 'Access to multiplayer games',
-                time: '10 year'
+                time: '$10/year'
             },
             {
                 id: 2,
                 name: 'Larger storage',
                 desc: 'Extra 1TB of cloud save',
-                time: '20 year'
+                time: '$2/year'
             },
             {
                 id: 3,
                 name: 'Customizable profile',
                 desc: 'Custom theme on your profile',
-                time: '20 year'
+                time: '$2/year'
             },
         ] 
     },
@@ -128,19 +128,19 @@ const data = [
                 id: 1,
                 name: 'Online service',
                 desc: 'Access to multiplayer games',
-                time: '10 year'
+                time: '$10/year'
             },
             {
                 id: 2,
                 name: 'Larger storage',
                 desc: 'Extra 1TB of cloud save',
-                time: '20 year'
+                time: '$2/year'
             },
             {
                 id: 3,
                 name: 'Customizable profile',
                 desc: 'Custom theme on your profile',
-                time: '20 year'
+                time: '$2/year'
             },
         ]
     },  
@@ -157,19 +157,19 @@ const data = [
                 id: 1,
                 name: 'Online service',
                 desc: 'Access to multiplayer games',
-                time: '10 year'
+                time: '$10/year'
             },
             {
                 id: 2,
                 name: 'Larger storage',
                 desc: 'Extra 1TB of cloud save',
-                time: '20 year'
+                time: '$2/year'
             },
             {
                 id: 3,
                 name: 'Customizable profile',
                 desc: 'Custom theme on your profile',
-                time: '20 year'
+                time: '$2/year'
             },
         ]
     },

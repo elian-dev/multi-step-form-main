@@ -34,6 +34,7 @@ const {index, step,} = Astro.props;
             &--active {
                 background-color: var(--sky-blue);
                 color: #000;
+                transition: all 0.3s ease-in-out;
             }
         }
         &__content {
@@ -60,6 +61,7 @@ const {index, step,} = Astro.props;
         }
 
         @media screen and (max-width: 500px) {
+            height: fit-content;
             margin-bottom: 0;
             margin-top: 5px;
             align-items: flex-start;

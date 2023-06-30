@@ -7,36 +7,44 @@ import Data from "../../data.js";
     <h2 class="plans-section__title">Select your plan</h2>
     <p class="plans-section__legend">You have the option of monthly or yearly billing.</p>
 
-    <div class="plans">
-        {
-            Data.filter(plan => plan.category === "yearly").map(plan => (
-                <Plan
-                    img={plan.image}
-                    title={plan.name}
-                    price={plan.price}
-                    category={plan.category}
-                    free={plan.free}
-                />
-            ))
-        }
-    </div>
+    <form method="POST" name="plans-form">
+        <div class="plans">
+            {
+                Data.filter(plan => plan.category === "monthly").map((plan, index) => (
+                    <Plan
+                        key={index}
+                        id={plan.id}
+                        img={plan.image}
+                        title={plan.name}
+                        price={plan.price}
+                        category={plan.category}
+                        free={plan.free}
+                    />
+                ))
+            }
+        </div>
 
-    <div class="switch-plan">
-        <span>Monthly</span>
-        <label class="switch-plan__switch">
-            <input type="checkbox" class="switch-plan__input">
-            <span class="switch-plan__slider switch-plan__round"></span>
-        </label>
-        <span>Yearly</span>
-    </div>
+        <div class="switch-plan">
+            <span class="switch-plan__label switch-plan__label--active" data-category="monthly">Monthly</span>
+            <label class="switch-plan__switch">
+                <input name="category" type="checkbox" class="switch-plan__input">
+                <span class="switch-plan__slider switch-plan__round"></span>
+            </label>
+            <span class="switch-plan__label" data-category="yearly">Yearly</span>
+        </div>
 
-    <div class="section__next--container">
-        <input type="submit" class="section__next" value="Next Step">
-    </div>
+        <div class="section__next--container">
+            <input type="submit" class="section__next" value="Next Step">
+        </div>
+    </form>
     
 </section>
 
 <style lang="scss">
+    form {
+        display: flex;
+        flex-direction: column;
+    }
     .plans-section {
         &__title {
             font-size: var(--heading);
@@ -77,6 +85,16 @@ import Data from "../../data.js";
         margin: 1rem 0;
         padding: 0.5rem;
         border-radius: 8px;
+
+        &__label {
+            font-size: var(--body-l);
+            color: var(--grey);
+            &--active {
+                color: var(--denim);
+                font-weight: 700;
+                transition: color 1.5s ease-in-out;
+            }
+        }
 
         &__switch {
             position: relative;
@@ -144,12 +162,47 @@ import Data from "../../data.js";
 
 <script>
     import { nextStep } from "../../utils/nextStep";
+    import { getData } from "../../../scripts/state/getData";
+    import { setPlanData } from "../../../scripts/state/plan/setPlanData";
 
-    const switchPlan = document.querySelector(".switch-plan__input");
+    const form = document.querySelector('form[name="plans-form"]');
+    const switchInput = document.querySelector('input[name="category"]');
 
-    const NextStep = document.querySelectorAll(".section__next");
-    NextStep[1].addEventListener("click", () => {
+    switchInput.addEventListener('change', (e) => {
+        if (e.target.checked) {
+            // Span with data-category="monthly"
+            document.querySelector('span[data-category="monthly"]').classList.remove('switch-plan__label--active');
+
+            // Span with data-category="yearly"
+            document.querySelector('span[data-category="yearly"]').classList.add('switch-plan__label--active');
+        } else {
+            // Span with data-category="yearly"
+            document.querySelector('span[data-category="yearly"]').classList.remove('switch-plan__label--active');
+
+            // Span with data-category="monthly"
+            document.querySelector('span[data-category="monthly"]').classList.add('switch-plan__label--active');
+        }
+    })
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(form as HTMLFormElement);
+        const data = Object.fromEntries(formData.entries());
+
+        if (data.plans) {
+            data.id = data.plans;
+        }
+
+        if (data.category === "on") {
+            data.category = "yearly";
+        } else {
+            data.category = "monthly";
+        }
+
+        const state = getData();
+        setPlanData(state, data);
+
         nextStep(2);
-    });
+    })
 
 </script>

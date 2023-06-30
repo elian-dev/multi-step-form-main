@@ -1,30 +1,29 @@
 ---
 import Addon from "./Addon.astro";
+// Fetch data from data.js
+import Data from "../../data.js";
+
 ---
 <section class="section addons">
     <h2 class="addons__title">Pick add-ons</h2>
     <p class="addons__legend">Add-ons help enhance your gaming experience.</p>
 
     <div class="addons__container">
-        <Addon 
-            title="Online service"
-            description="Access to multiplayer games"
-            price="+$1/mo"
-        />
-        <Addon 
-            title="Larger storage"
-            description="Extra 1TB of cloud save"
-            price="+$2/mo"
-        />
-        <Addon 
-            title="Customizable profile"
-            description="Custom theme on your profile"
-            price="+$2/mo"
-        />
+        {
+            Data.filter(plan => plan.category === "yearly").filter(plan => plan.name === "Arcade").map(plan => plan.addons).map(addons => addons.map(addon => {
+                return (
+                    <Addon 
+                        title={addon.name}
+                        description={addon.desc}
+                        price={addon.time}
+                    />
+                )
+            }))
+        }
     </div>
 
     <div class="section__next--container">
-        <input type="submit" class="section__next" value="Next Step">
+        <input name="addons-next" type="submit" class="section__next" value="Next Step">
     </div>
 
 </section>
@@ -58,10 +57,18 @@ import Addon from "./Addon.astro";
 </style>
 <script>
     import { nextStep } from "../../utils/nextStep";
+    import { getData } from "../../../scripts/state/getData";
+    import { getPlanData } from "../../../scripts/state/plan/getPlanData";
 
-    const NextStep = document.querySelectorAll(".section__next");
-    NextStep[2].addEventListener("click", () => {
-        nextStep(3);
+    const nextSection = document.querySelector("input[name=addons-next]");
+
+    nextSection.addEventListener("click", () => {
+        const data = getData();
+        const planData = getPlanData(data)
+
+        if (planData) {
+            nextStep(3);
+        }
     });
 
 </script>

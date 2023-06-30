@@ -45,8 +45,13 @@ const { steps } = Astro.props;
 
         &__item {
             display: none;
+            -webkit-animation: fadeIn 1s;
+            -moz-animation: fadeIn 1s;
+            -o-animation: fadeIn 1s;
+            -ms-animation: fadeIn 1s;
             &--active {
                 display: block;
+                
             }
         }
 
@@ -56,7 +61,34 @@ const { steps } = Astro.props;
             padding: 1rem;
 
             background-color: var(--white);
-            border-radius: 10px
+            border-radius: 10px;
+            box-shadow: 0px 25px 40px -20px rgba(0, 0, 0, 0.10);
+
 		}
+    }
+
+    @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
+    @-moz-keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
+    @-webkit-keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
+    @-o-keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
+    @-ms-keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
     }
 </style>
