@@ -155,15 +155,12 @@ const planCategory = "monthly";
         const formData = new FormData(form as HTMLFormElement);
         const data = Object.fromEntries(formData.entries());
 
+        // Get the state data
         const planData = getData();
-
-        const switchPlan = document.querySelector('.switch-plan__input');
-
+        
         // Set the plan data
+        const switchPlan = document.querySelector('.switch-plan__input');
         data.category = switchPlan.checked ? 'yearly' : 'monthly';
-
-        console.log(data);
-
         setPlanData(planData, data);
 
         // Function to changes in sections
@@ -174,8 +171,6 @@ const planCategory = "monthly";
     const goBack = document.querySelector('.section__back');
     goBack.addEventListener('click', (e) => {
         e.preventDefault();
-
-
         // Function to changes in sections
         nextStep(0);
     })
