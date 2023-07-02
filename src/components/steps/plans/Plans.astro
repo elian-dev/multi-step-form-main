@@ -8,6 +8,7 @@ const planCategory = "monthly";
     <p class="plans-section__legend">You have the option of monthly or yearly billing.</p>
 
     <form method="POST" name="plans-form">
+
         <PlansCards category={planCategory} />
 
         <label class="switch-plan">
@@ -144,6 +145,7 @@ const planCategory = "monthly";
     import { setPlanData } from "../../../scripts/state/plan/setPlanData";
 
     const form = document.querySelector('form[name="plans-form"]');
+    
 
     // Form submit event
     form.addEventListener('submit', (e) => {
@@ -153,7 +155,17 @@ const planCategory = "monthly";
         const formData = new FormData(form as HTMLFormElement);
         const data = Object.fromEntries(formData.entries());
 
+        const planData = getData();
+
+        const switchPlan = document.querySelector('.switch-plan__input');
+
+        // Set the plan data
+        data.category = switchPlan.checked ? 'yearly' : 'monthly';
+
         console.log(data);
+
+        setPlanData(planData, data);
+
         // Function to changes in sections
         nextStep(2);
     })

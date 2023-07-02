@@ -1,15 +1,6 @@
 ---
 const { category } = Astro.props;
 ---
-
-<!-- <input class="plan__input" type="radio" id={id.toString()} checked={key == 0} name="plans" value={id.toString()}>
-<label class="plan plan__label" for={id.toString()}>
-    <img class="plan__img" src={img} alt="" srcset="">
-    <h3 class="plan__title">{title}</h3>
-    <p class="plan__price">${price}{category == 'monthly' ? '/mo' : '/yr'}</p>
-    <p class="plan__free">{free}</p>
-</label> -->
-
 <plan-cards data-category={category}>
     <!-- Plan cards code -->
     <div class="plans" id="plans-content"></div>
@@ -68,11 +59,12 @@ const { category } = Astro.props;
 
             plans.forEach((plan, key) => {
                 plansContent.innerHTML += `
+                    <input type="hidden" name="name" value=${plan.name} />
                     <input 
                         class="plan__input" 
                         type="radio" 
                         id=${plan.id} 
-                        name="plans" 
+                        name="id" 
                         value=${plan.id} 
                         ${key == 0 ? 'checked' : '' }
                     />
