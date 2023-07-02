@@ -5,8 +5,8 @@ import RemoveError from "./RemoveError.js";
 
 import { nextStep } from "./nextStep.js";
 
-import { getData } from "../../scripts/state/getData.js";
-import { setFormData } from "../../scripts/state/form/setFormData.js";
+import { getData } from "../state/getData.js";
+import { setFormData } from "../state/form/setFormData.js";
 
 const state = getData();
 

@@ -1,44 +1,31 @@
 ---
-import Plan from "./Plan.astro";
-// Fetch data from data.js
-import Data from "../../data.js";
+import PlansCards from "./PlanCards.astro";
+
+const planCategory = "monthly";
 ---
 <section class="section plans-section">
     <h2 class="plans-section__title">Select your plan</h2>
     <p class="plans-section__legend">You have the option of monthly or yearly billing.</p>
 
     <form method="POST" name="plans-form">
-        <div class="plans">
-            {
-                Data.filter(plan => plan.category === "monthly").map((plan, index) => (
-                    <Plan
-                        key={index}
-                        id={plan.id}
-                        img={plan.image}
-                        title={plan.name}
-                        price={plan.price}
-                        category={plan.category}
-                        free={plan.free}
-                    />
-                ))
-            }
-        </div>
+        <PlansCards category={planCategory} />
 
-        <div class="switch-plan">
+        <label class="switch-plan">
             <span class="switch-plan__label switch-plan__label--active" data-category="monthly">Monthly</span>
-            <label class="switch-plan__switch">
+            <div class="switch-plan__switch">
                 <input name="category" type="checkbox" class="switch-plan__input">
                 <span class="switch-plan__slider switch-plan__round"></span>
-            </label>
+            </div>
             <span class="switch-plan__label" data-category="yearly">Yearly</span>
-        </div>
-
+        </label>
+    
         <div class="section__next--container">
             <a class="section__back" href="#">Go Back</a>
             <input type="submit" class="section__next" value="Next Step">
         </div>
+
     </form>
-    
+
 </section>
 
 <style lang="scss">
@@ -66,18 +53,7 @@ import Data from "../../data.js";
             width: 100%;
         }
     }
-    .plans {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: 2rem;
-
-        margin-top: 2rem;
-        width: 100%;
-
-        @media screen and (max-width: 500px) {
-            grid-template-columns: repeat(1, 1fr);
-		}
-    }
+    
     .switch-plan {
         display: flex;
         justify-content: center;
@@ -163,54 +139,32 @@ import Data from "../../data.js";
 </style>
 
 <script>
-    import { nextStep } from "../../utils/nextStep";
+    import { nextStep } from "../../../scripts/utils/nextStep";
     import { getData } from "../../../scripts/state/getData";
     import { setPlanData } from "../../../scripts/state/plan/setPlanData";
 
     const form = document.querySelector('form[name="plans-form"]');
-    const switchInput = document.querySelector('input[name="category"]');
 
-    switchInput.addEventListener('change', (e) => {
-        if (e.target.checked) {
-            // Span with data-category="monthly"
-            document.querySelector('span[data-category="monthly"]').classList.remove('switch-plan__label--active');
-
-            // Span with data-category="yearly"
-            document.querySelector('span[data-category="yearly"]').classList.add('switch-plan__label--active');
-        } else {
-            // Span with data-category="yearly"
-            document.querySelector('span[data-category="yearly"]').classList.remove('switch-plan__label--active');
-
-            // Span with data-category="monthly"
-            document.querySelector('span[data-category="monthly"]').classList.add('switch-plan__label--active');
-        }
-    })
-
+    // Form submit event
     form.addEventListener('submit', (e) => {
         e.preventDefault();
+
+        // Get the data from the form
         const formData = new FormData(form as HTMLFormElement);
         const data = Object.fromEntries(formData.entries());
 
-        if (data.plans) {
-            data.id = data.plans;
-        }
-
-        if (data.category === "on") {
-            data.category = "yearly";
-        } else {
-            data.category = "monthly";
-        }
-
-        const state = getData();
-        setPlanData(state, data);
-
+        console.log(data);
+        // Function to changes in sections
         nextStep(2);
     })
 
+    // Go back button event
     const goBack = document.querySelector('.section__back');
     goBack.addEventListener('click', (e) => {
         e.preventDefault();
+
+
+        // Function to changes in sections
         nextStep(0);
     })
-
 </script>

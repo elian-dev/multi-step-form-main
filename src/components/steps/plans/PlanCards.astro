@@ -1,0 +1,93 @@
+---
+const { category } = Astro.props;
+---
+
+<!-- <input class="plan__input" type="radio" id={id.toString()} checked={key == 0} name="plans" value={id.toString()}>
+<label class="plan plan__label" for={id.toString()}>
+    <img class="plan__img" src={img} alt="" srcset="">
+    <h3 class="plan__title">{title}</h3>
+    <p class="plan__price">${price}{category == 'monthly' ? '/mo' : '/yr'}</p>
+    <p class="plan__free">{free}</p>
+</label> -->
+
+<plan-cards data-category={category}>
+    <!-- Plan cards code -->
+    <div class="plans" id="plans-content"></div>
+</plan-cards>
+
+<style lang="scss">
+    // Styles for plan cards.
+    .plans {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 2rem;
+
+        margin-top: 2rem;
+        width: 100%;
+
+        @media screen and (max-width: 500px) {
+            grid-template-columns: repeat(1, 1fr);
+		}
+    }
+</style>
+<script>
+    import Data from "../../data.js";
+    import { switchPlans } from "../../../scripts/utils/SwitchPlans";
+
+    // Plan cards html custom element.
+    class PlanCards extends HTMLElement {
+        constructor() {
+            super();
+
+            let category = this.dataset.category;
+
+             // Get the event switch input
+            const switchInput = document.querySelector('input[name="category"]');
+            switchInput.addEventListener('change', (e) => {
+
+                if (e.target.checked) {
+                    category = 'yearly';
+                } else {
+                    category = 'monthly';
+                }
+
+                this.innerPlanCards(category);
+
+                switchPlans(e);
+            })
+
+            this.innerPlanCards(category);
+
+        }
+
+        innerPlanCards = (category,) => {
+            const plans = Data.filter(plan => plan.category === category);
+
+            const plansContent = document.getElementById('plans-content');
+            plansContent.innerHTML = '';
+
+            plans.forEach((plan, key) => {
+                plansContent.innerHTML += `
+                    <input 
+                        class="plan__input" 
+                        type="radio" 
+                        id=${plan.id} 
+                        name="plans" 
+                        value=${plan.id} 
+                        ${key == 0 ? 'checked' : '' }
+                    />
+
+                    <label class="plan plan__label" for=${plan.id}>
+                        <img class="plan__img" src=${plan.image} alt="" srcset="">
+                        <h3 class="plan__title">${plan.name}</h3>
+                        <p class="plan__price">${plan.price}${category == 'monthly' ? '/mo' : '/yr'}</p>
+                        <p class="plan__free">${plan.free}</p>
+                    </label>
+                `
+            });
+        } 
+    }
+    
+    // Tell the browser to use our AstroHeart class for <astro-heart> elements.
+    customElements.define('plan-cards', PlanCards);
+</script>
