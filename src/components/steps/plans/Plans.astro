@@ -144,10 +144,8 @@ const planCategory = "monthly";
     import { getData } from "../../../scripts/state/getData";
     import { setPlanData } from "../../../scripts/state/plan/setPlanData";
 
-    const form = document.querySelector('form[name="plans-form"]');
-    
-
     // Form submit event
+    const form = document.querySelector('form[name="plans-form"]');
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 

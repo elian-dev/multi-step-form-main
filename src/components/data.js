@@ -12,21 +12,28 @@ const data = [
                 id: 1,
                 name: 'Online service',
                 desc: 'Access to multiplayer games',
-                time: '$1/mo'
+                price: 1,
+                checked: true,
+                status: 'active'
             },
             {
                 id: 2,
                 name: 'Larger storage',
                 desc: 'Extra 1TB of cloud save',
-                time: '$2/mo'
+                price: 2,
+                checked: true,
+                status: 'active'
             },
             {
                 id: 3,
                 name: 'Customizable profile',
                 desc: 'Custom theme on your profile',
-                time: '$2/mo'
+                price: 2,
+                checked: false,
+                status: 'active'
             },
-        ]       
+        ],
+        status: 'active'
     },
     {
         id: 2,
@@ -41,21 +48,28 @@ const data = [
                 id: 1,
                 name: 'Online service',
                 desc: 'Access to multiplayer games',
-                time: '1 month'
+                price: 2,
+                checked: true,
+                status: 'active'
             },
             {
                 id: 2,
                 name: 'Larger storage',
                 desc: 'Extra 1TB of cloud save',
-                time: '2 month'
+                price: 2,
+                checked: true,
+                status: 'active'
             },
             {
                 id: 3,
                 name: 'Customizable profile',
                 desc: 'Custom theme on your profile',
-                time: '2 month'
+                price: 2,
+                checked: false,
+                status: 'active'
             },
-        ] 
+        ],
+        status: 'active'
     },
     {
         id: 3,
@@ -70,21 +84,28 @@ const data = [
                 id: 1,
                 name: 'Online service',
                 desc: 'Access to multiplayer games',
-                time: '$1/mo'
+                price: 2,
+                checked: true,
+                status: 'active'
             },
             {
                 id: 2,
                 name: 'Larger storage',
                 desc: 'Extra 1TB of cloud save',
-                time: '$2/mo'
+                price: 2,
+                checked: true,
+                status: 'active'
             },
             {
                 id: 3,
                 name: 'Customizable profile',
                 desc: 'Custom theme on your profile',
-                time: '$2/mo'
+                price: 2,
+                checked: false,
+                status: 'active'
             },
-        ] 
+        ],
+        status: 'active'
     },
     {
         id: 4,
@@ -99,21 +120,28 @@ const data = [
                 id: 1,
                 name: 'Online service',
                 desc: 'Access to multiplayer games',
-                time: '$10/year'
+                price: 10,
+                checked: true,
+                status: 'active'
             },
             {
                 id: 2,
                 name: 'Larger storage',
                 desc: 'Extra 1TB of cloud save',
-                time: '$2/year'
+                price: 20,
+                checked: true,
+                status: 'active'
             },
             {
                 id: 3,
                 name: 'Customizable profile',
                 desc: 'Custom theme on your profile',
-                time: '$2/year'
+                price: 20,
+                checked: false,
+                status: 'active'
             },
-        ] 
+        ],
+        status: 'active'
     },
     {
         id: 5,
@@ -128,21 +156,28 @@ const data = [
                 id: 1,
                 name: 'Online service',
                 desc: 'Access to multiplayer games',
-                time: '$10/year'
+                price: 10,
+                checked: true,
+                status: 'active'
             },
             {
                 id: 2,
                 name: 'Larger storage',
                 desc: 'Extra 1TB of cloud save',
-                time: '$2/year'
+                price: 20,
+                checked: true,
+                status: 'active'
             },
             {
                 id: 3,
                 name: 'Customizable profile',
                 desc: 'Custom theme on your profile',
-                time: '$2/year'
+                price: 20,
+                checked: false,
+                status: 'active'
             },
-        ]
+        ],
+        status: 'active'
     },  
     {
         id: 6,
@@ -157,21 +192,28 @@ const data = [
                 id: 1,
                 name: 'Online service',
                 desc: 'Access to multiplayer games',
-                time: '$10/year'
+                price: 10,
+                checked: true,
+                status: 'active'
             },
             {
                 id: 2,
                 name: 'Larger storage',
                 desc: 'Extra 1TB of cloud save',
-                time: '$2/year'
+                price: 20,
+                checked: true,
+                status: 'active'
             },
             {
                 id: 3,
                 name: 'Customizable profile',
                 desc: 'Custom theme on your profile',
-                time: '$2/year'
+                price: 20,
+                checked: false,
+                status: 'active'
             },
-        ]
+        ],
+        status: 'active'
     },
 ]
 

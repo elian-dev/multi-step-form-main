@@ -3,33 +3,29 @@ import Addon from "./Addon.astro";
 // Fetch data from data.js
 import Data from "../../data.js";
 
+import AddonOptions from "./AddonOptions.astro";
 ---
 <section class="section addons">
     <h2 class="addons__title">Pick add-ons</h2>
     <p class="addons__legend">Add-ons help enhance your gaming experience.</p>
 
-    <div class="addons__container">
-        {
-            Data.filter(plan => plan.category === "yearly").filter(plan => plan.name === "Arcade").map(plan => plan.addons).map(addons => addons.map(addon => {
-                return (
-                    <Addon 
-                        title={addon.name}
-                        description={addon.desc}
-                        price={addon.time}
-                    />
-                )
-            }))
-        }
-    </div>
+    <form action="POST" name="addons-form">
+        <AddonOptions />
 
-    <div class="section__next--container">
-        <a class="section__back section__back--addons" href="#">Go Back</a>
-        <input name="addons-next" type="submit" class="section__next" value="Next Step">
-    </div>
+        <div class="section__next--container">
+            <a class="section__back section__back--addons" href="#">Go Back</a>
+            <input name="addons-next" type="submit" class="section__next" value="Next Step">
+        </div>
+    </form>
 
 </section>
 
 <style lang="scss">
+    form {
+        display: flex;
+        flex-direction: column;
+        height: -webkit-fill-available;
+    }
     .addons {
         &__title {
             font-size: var(--heading);
@@ -59,20 +55,28 @@ import Data from "../../data.js";
 <script>
     import { nextStep } from "../../../scripts/utils/nextStep";
     import { getData } from "../../../scripts/state/getData";
-    import { getPlanData } from "../../../scripts/state/plan/getPlanData";
+    import { setAddons } from "../../../scripts/state/addons/setAddons";
 
-    const nextSection = document.querySelector("input[name=addons-next]");
+    const addonsForm = document.querySelector("form[name=addons-form]");
 
-    nextSection.addEventListener("click", () => {
-        const data = getData();
-        const planData = getPlanData(data)
+    addonsForm.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-        if (planData) {
-            nextStep(3);
-        }
-    });
+        // Get the data from the form
+        const formData = new FormData(addonsForm as HTMLFormElement);
+        const data = Object.fromEntries(formData.entries());
 
+        // Get the state data
+        const status = getData();
 
+        // Set the addons
+        setAddons(status, data);
+
+        // Function to changes in sections
+        nextStep(3);
+    })
+
+    // Go back to previous section
     const goBack = document.querySelector('.section__back--addons');
     goBack.addEventListener('click', (e) => {
         e.preventDefault();

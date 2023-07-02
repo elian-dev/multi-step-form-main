@@ -1,3 +1,3 @@
 export function getAddons(data) {
-    return data.addonsSelected;
+    return data.addonsSelected
 }

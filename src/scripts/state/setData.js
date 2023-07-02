@@ -18,11 +18,7 @@ export function setData() {
             },
 
             // Addons	
-            addonsSelected: {
-                id: '',
-                name: '',
-                category: '',
-            }
+            addonsSelected: []
         }
     };
 

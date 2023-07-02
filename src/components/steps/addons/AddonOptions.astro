@@ -1,0 +1,92 @@
+<addons-options id="addons-options">
+    <div class="addons__container" id="addons-container"></div>
+</addons-options>
+
+<style lang="scss">
+    .addons {
+        &__container {
+            max-width: 100%;
+        }
+    }
+</style>
+
+<script>
+    import { getData } from "../../../scripts/state/getData";
+    import { getPlanData } from "../../../scripts/state/plan/getPlanData";
+    import data from "../../data.js";
+    
+    class AddonsOptions extends HTMLElement {
+        constructor() {
+            super();
+            this.observerTarget();
+        }
+
+        observerTarget = () => {
+            const options = {
+                root: document.querySelector('.main-card'),
+                rootMargin: '10px 0px', // like css property
+                threshold: 1.0
+            }
+
+            const target = document.querySelector('.addons');
+
+            var addons = null;
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                if (entries[0].isIntersecting) {
+                    // Removing previous addons
+                    this.clearInnerAddons();
+
+                    // Getting actual data
+                    const status = getData();
+                    const planData = getPlanData(status);
+                    
+                    // Getting addons
+                    addons = data.filter((item) => {
+                        return item.id == planData.id;
+                    });
+
+                    // Adding addons to the DOM
+                    this.innerAddons(addons[0], planData.category);
+
+                } else {
+                    // Removing previous addons
+                    this.clearInnerAddons();
+                }
+            }, options);
+            observer.observe(target);
+        }
+
+        innerAddons = (data: any, category: string) => {
+            const container = document.querySelector('#addons-container');
+            
+            data.addons.map((item) => {
+                const { id, name, price, desc, checked} = item;
+                container.innerHTML += `
+                <label class="addon" for=${name}>
+                    <div class="addon__control">
+                        <input class="addon__control--input" type="checkbox" name=${id} id=${name} ${checked ? 'checked' : '' }>
+                        <span class="addon__control--checkmark"></span>
+                    </div>
+
+                    <div class="addon__content">
+                        <h3 class="addon__content--title">${name}</h3>
+                        <p class="addon__content--description">${desc}</p>
+                    </div>
+
+                    <div class="addon__price">
+                        <p class="addon__price--legend">+$${price}/${category == 'monthly' ? 'mo' : 'yr'}</p>
+                    </div>
+                </label>
+                `
+            })
+        }
+
+        clearInnerAddons = () => {
+            const container = document.querySelector('#addons-container');
+            container.innerHTML = '';
+        }
+    }
+    customElements.define('addons-options', AddonsOptions);
+    
+</script>
