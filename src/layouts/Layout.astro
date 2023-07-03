@@ -242,7 +242,6 @@ const { title } = Astro.props;
             }
 		}
     }
-
 	// Addons styles
 	.addon__control {
         position: relative;
@@ -334,6 +333,68 @@ const { title } = Astro.props;
                 margin: 0;
                 padding: 0;
             }
+        }
+    }
+
+	// Resume
+	.resume {
+        border-collapse: collapse;
+        width: 100%;
+        &__main-pack {
+            background-color: var(--very-light-grey);
+            border-radius: 8px;
+            color: var(--denim);
+            & tr th {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                border-bottom: 1px solid var(--light-grey);
+                &:first-child {
+                    align-items: flex-start;
+                }
+            }
+
+            &--cta {
+                font-size: 14px;
+                color: var(--grey);
+            }
+        }
+        &__addons {
+            background-color: var(--very-light-grey);
+            border-radius: 8px;
+        }
+
+        &__total {
+            & tr td:last-child {
+                font-size: 20px;
+                color: var(--purple);
+                font-weight: bold;
+            }
+        }
+
+        & tr {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        & th {
+            width: 100%;
+            padding-bottom: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            text-align: right;
+
+            &:first-child {
+                margin-left: 2rem;
+            }
+
+            &:last-child {
+                margin-right: 2rem;
+            }
+        }
+        & td {
+            color: var(--grey);
+            padding: 1rem 2rem;
         }
     }
 </style>

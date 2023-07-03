@@ -1,0 +1,115 @@
+<resume-table id="resume-table-options">
+    <div class="resume-table__container" id="resume-table-container">
+        <table class="resume">
+            <thead class="resume__main-pack" id="resume__main-pack"></thead>
+            <tbody class="resume__addons"> </tbody>
+            <tfoot class="resume__total"></tfoot>
+        </table>
+    </div>
+</resume-table>
+
+<style lang="scss">
+    .resume-table {
+        &__container {
+            max-width: 100%;
+        }
+    }
+</style>
+
+<script>
+    import { getData } from "../../../scripts/state/getData";
+
+    import data from "../../data.js";
+    
+    class ResumeTable extends HTMLElement {
+        constructor() {
+            super();
+            this.observerTarget();
+        }
+
+        observerTarget = () => {
+            const options = {
+                root: document.querySelector('.main-card'),
+                rootMargin: '10px 0px',
+                threshold: 1.0
+            }
+
+            const target = document.querySelector('.summary');
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                if (entries[0].isIntersecting) {
+                    // Removing previous addons
+                    this.clearInnerAddons();
+
+                    // Getting actual data
+                    const status = getData();
+
+                    // Planselected
+                    const planSelected = data.find(item => item.id === status.planSelected.id);
+                    const addonsSelected = planSelected.addons.filter(addon => status.addonsSelected[addon.id] === 'on' );
+
+                    // Adding addons to the DOM
+                    this.innerAddons(planSelected, addonsSelected);
+
+                } else {
+                    // Removing previous addons
+                    this.clearInnerAddons();
+                }
+            }, options);
+            observer.observe(target);
+        }
+
+        innerAddons = (plan: any, addonsSelected: any) => {
+            const container = document.querySelector('#resume-table-container');
+            
+            container.innerHTML = `
+                <table class="resume">
+                    <thead class="resume__main-pack" id="resume__main-pack"></thead>
+                    <tbody class="resume__addons"> </tbody>
+                    <tfoot class="resume__total"></tfoot>
+                </table>
+            `;
+
+            // Main pack
+            const mainPack = document.querySelector('#resume__main-pack');
+            mainPack.innerHTML = `
+                <tr>
+                    <th>
+                        ${plan.name} 
+                        <a class="resume__main-pack--cta" href="#">Change</a>
+                    </th>
+                    <th>$${plan.price}/mo</th>
+                </tr>
+            `;
+
+            // Addons
+            const addons = document.querySelector('.resume__addons');
+
+            // Getting addons selected
+            addonsSelected.forEach((addon: any) => {
+                addons.innerHTML += `
+                    <tr>
+                        <td>${addon.name}</td>
+                        <td>+$${addon.price}/mo</td>
+                    </tr>
+                `;
+            });
+
+            // Total calculation
+            const total = document.querySelector('.resume__total');
+            total.innerHTML = `
+                <tr>
+                    <td>Total(per month)</td>
+                    <td>+$${plan.price + addonsSelected.reduce((acc: any, addon: any) => acc + addon.price, 0)}/mo</td>
+                </tr>
+            `;
+        }
+
+        clearInnerAddons = () => {
+            const container = document.querySelector('#resume-table-container');
+            container.innerHTML = '';
+        }
+    }
+    customElements.define('resume-table', ResumeTable);
+    
+</script>

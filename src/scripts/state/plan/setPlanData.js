@@ -1,5 +1,5 @@
 export function setPlanData(state, data) {
-    state.planSelected.id = data.id;
+    state.planSelected.id = Number(data.id);
     state.planSelected.name = data.name;
     state.planSelected.category = data.category;
 
