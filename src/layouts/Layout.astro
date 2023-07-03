@@ -198,12 +198,17 @@ const { title } = Astro.props;
         padding: 0.5rem 2rem 0.5rem 0.5rem;
         &__label {
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         &__input {
             display: none;
         }
         &__img {
-            padding-bottom: 2rem;
+            padding-bottom: 2.5rem;
+            width: 40px;
+            height: 40px;
         }
         &__title {
             font-size: 1rem;

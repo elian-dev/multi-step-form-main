@@ -10,7 +10,7 @@ interface Props {
 
 const { steps } = Astro.props
 ---
-<section class="bar">
+<article class="bar">
     <ul class="bar__ul">
         {
             steps.map((step, index) => (
@@ -18,7 +18,7 @@ const { steps } = Astro.props
             ))
         }
     </ul>
-</section>
+</article>
 
 <style lang="scss">
     .bar {
