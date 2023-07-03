@@ -40,13 +40,13 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Repo](https://github.com/elian-dev/multi-step-form-main)
+- Live Site URL: [Live site](https://multi-step-form-main-dusky.vercel.app/)
 
 
 ### Built with
 - Semantic HTML5 markup
-- Custom html elements
+- Custom HTML elements
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
@@ -55,19 +55,19 @@ Users should be able to:
 
 ### What I learned
 
-I learn how to prepare my project for a future API integrations, the complexity of manage a global state with vanilla js.
+I learn how to prepare my project for future API integrations, and the complexity of managing a global state with vanilla js.
 I wanted to use some observer APIs and learn more about them. 
-My estimate time to finish this task was of 3 days, but at the end it takes me one week, so in that aspect I need to continue practicing.
+My estimated time to finish this task was 3 days, but at the end it takes me one week, so I needed to continue practicing.
 
 ### Continued development
 
-- How to stimate the time
-- Analyze more the componentization 
+- How to estimate the time
+- Analyze the componentization 
 - How to create more reusable functions
 
 ### Useful resources
 
-- [Web components with custom elements](https://docs.astro.build/en/guides/client-side-scripts/#web-components-with-custom-elements) - This helped me because astro don't let access to browsers API, and I was working with the local storage and observing events in the dom.
+- [Web components with custom elements](https://docs.astro.build/en/guides/client-side-scripts/#web-components-with-custom-elements) - This helped me because Astro doesn't let access to browsers API, and I was working with the local storage and observing events in the dom.
 
 ## Author
 
