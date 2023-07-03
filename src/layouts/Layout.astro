@@ -48,6 +48,10 @@ const { title } = Astro.props;
 		--body-l: 1rem;
 		--body-m: 0.88rem;
 		--body-s: 0.75rem;
+
+        @media screen and (max-width: 500px) {
+            --heading: 24px;
+        }
 	}
 
 	@font-face {
@@ -129,6 +133,11 @@ const { title } = Astro.props;
 			cursor: pointer;
 			transition: all 0.3s ease-in-out;
 
+            @media  screen and (max-width: 500px) {
+                border-radius: 4px;
+                margin: 1rem 0.5rem 1rem auto;
+            }
+
 			&:hover {
 				background-color: #164A8A;
 			}
@@ -141,12 +150,10 @@ const { title } = Astro.props;
 				justify-self: end;
 			}
 			@media screen and (max-width: 500px) {
-				margin: 1rem 0.5rem;
 				&--container {
 					width: 100%;
 					display: flex;
 					align-items: center;
-					justify-content: flex-end;
 					position: fixed;
 					bottom: 0;
 					left: 0;
@@ -158,6 +165,11 @@ const { title } = Astro.props;
 		&__back {
 			color: var(--grey);
 			text-decoration: none;
+
+            @media screen and (max-width: 500px) {
+                margin-left: 20px;
+            }
+
 		}
 
 		@media screen and (max-width: 500px) {
@@ -218,7 +230,7 @@ const { title } = Astro.props;
             padding: 0.5rem 1rem 0.5rem 0.5rem;
             display: grid;
             grid-template-columns: 20% 2fr;
-            grid-template-rows: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
 
             align-items: center;
 
