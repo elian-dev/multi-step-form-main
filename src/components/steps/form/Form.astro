@@ -41,8 +41,8 @@ import Input from "./Input.astro";
 <script >
     import { FormValidator } from "../../../scripts/utils/FormValidator.js";
 
-    const form = document.querySelector('.form__section');
-
+    const form = document.querySelector('.form__section')
+    
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         const formData = new FormData(form as HTMLFormElement);

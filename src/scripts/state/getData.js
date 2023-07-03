@@ -1,3 +1,4 @@
+import { setData } from "./setData";
 export function getData() {
     const dataStore = sessionStorage.getItem('data');
     const jsonData = JSON.parse(dataStore);
@@ -5,6 +6,7 @@ export function getData() {
     if (dataStore !== null) {
         return jsonData;
     } else {
-        console.log('No data found in session storage');
+        setData();
+        return JSON.parse(sessionStorage.getItem('data'));
     }
 }
