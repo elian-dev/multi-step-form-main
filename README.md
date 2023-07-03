@@ -36,7 +36,7 @@ Users should be able to:
 ![](./public/assets/images/form.png)
 
 
-## My procces
+## My process
 
 ### Links
 
@@ -55,15 +55,15 @@ Users should be able to:
 
 ### What I learned
 
-I learn how to prepare my project for a future API integrations, the complixity of manage a global state with vanilla js.
+I learn how to prepare my project for a future API integrations, the complexity of manage a global state with vanilla js.
 I wanted to use some observer APIs and learn more about them. 
-My stimated time to finish this task was of 3 days, but at the end it takes me one week, so in that aspect I need to continue practicing.
+My estimate time to finish this task was of 3 days, but at the end it takes me one week, so in that aspect I need to continue practicing.
 
 ### Continued development
 
 - How to stimate the time
-- Analize more the componentization 
-- How to create more reusables functions
+- Analyze more the componentization 
+- How to create more reusable functions
 
 ### Useful resources
 
