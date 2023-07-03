@@ -45,10 +45,12 @@ import ResumeTable from './ResumeTable.astro'
 
 <script>
     import { nextStep } from "../../../scripts/utils/nextStep";
+    import { deleteData } from "../../../scripts/state/deleteData";
 
     const NextStep = document.querySelectorAll(".section__next");
     NextStep[3].addEventListener("click", () => {
         nextStep(4);
+        deleteData();
     });
 
     const goBack = document.querySelector('.section__back--summary');
