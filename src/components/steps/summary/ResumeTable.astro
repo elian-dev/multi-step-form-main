@@ -82,7 +82,7 @@ import { nextStep } from "../../../scripts/utils/nextStep";
                         ${plan.name} 
                         <a class="resume__main-pack--cta" href="#">Change</a>
                     </th>
-                    <th>$${plan.price}/mo</th>
+                    <th>$${plan.price}/${plan.category == 'monthly' ? 'mo' : 'yr'}</th>
                 </tr>
             `;
 
@@ -94,7 +94,7 @@ import { nextStep } from "../../../scripts/utils/nextStep";
                 addons.innerHTML += `
                     <tr>
                         <td>${addon.name}</td>
-                        <td>+$${addon.price}/mo</td>
+                        <td>+$${addon.price}/${plan.category == 'monthly' ? 'mo' : 'yr'}</td>
                     </tr>
                 `;
             });
@@ -104,7 +104,7 @@ import { nextStep } from "../../../scripts/utils/nextStep";
             total.innerHTML = `
                 <tr>
                     <td>Total(per month)</td>
-                    <td>+$${plan.price + addonsSelected.reduce((acc: any, addon: any) => acc + addon.price, 0)}/mo</td>
+                    <td>+$${plan.price + addonsSelected.reduce((acc: any, addon: any) => acc + addon.price, 0)}/${plan.category == 'monthly' ? 'mo' : 'yr'}</td>
                 </tr>
             `;
         }
