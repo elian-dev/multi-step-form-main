@@ -8,7 +8,7 @@ import Thanks from "./Thanks.astro";
 const { steps } = Astro.props;
 
 ---
-<article class="steps">
+<div class="steps">
     {
         steps.map((step: any) => (
             <div class={`steps__item ${step.id === 1 ? 'steps__item--active' : ''}`}>
@@ -30,7 +30,7 @@ const { steps } = Astro.props;
             </div>
         ))
     }
-</article>
+</div>
 
 <style lang="scss">
     .steps {

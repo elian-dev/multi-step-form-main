@@ -13,12 +13,12 @@ const { name, type, placeholder, label, value } = Astro.props;
     type === 'textarea' ? (
         <div class="input__group">
             <label class="input__group__label" for={name}>{label}</label>
-            <textarea class="input__group__input" name={name} id="" cols="30" rows="20" placeholder={placeholder}>{value}</textarea>
+            <textarea class="input__group__input" name={name} id={name} cols="30" rows="20" placeholder={placeholder}>{value}</textarea>
         </div>
     ) : (
         <div class="input__group">
             <label class="input__group__label" for={name}>{label}</label>
-            <input class="input__group__input" type={type} name={name} placeholder={placeholder} value={value? value : ''} />
+            <input class="input__group__input" id={name} type={type} name={name} placeholder={placeholder} value={value? value : ''} />
         </div>
     )
 }
