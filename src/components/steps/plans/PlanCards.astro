@@ -72,7 +72,7 @@ const { category } = Astro.props;
                     <label class="plan plan__label" for=${plan.id}>
                         <img class="plan__img" src=${plan.image} alt=${plan.name} />
                         <span class="plan__title">${plan.name}</span>
-                        <span class="plan__price">${plan.price}${category == 'monthly' ? '/mo' : '/yr'}</span>
+                        <span class="plan__price">$${plan.price}${category == 'monthly' ? '/mo' : '/yr'}</span>
                         <span class="plan__free">${plan.free}</span>
                     </label>
                 `

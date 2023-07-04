@@ -47,7 +47,7 @@
 
                     // Planselected
                     const planSelected = data.find(item => item.id === status.planSelected.id);
-                    const addonsSelected = planSelected.addons.filter(addon => status.addonsSelected[addon.id] === 'on' );
+                    const addonsSelected = planSelected.addons.filter(addon => status.addonsSelected.includes(addon.id.toString()));
 
                     // Adding addons to the DOM
                     this.innerAddons(planSelected, addonsSelected);

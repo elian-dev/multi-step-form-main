@@ -140,6 +140,7 @@ const planCategory = "monthly";
     import { nextStep } from "../../../scripts/utils/nextStep";
     import { getData } from "../../../scripts/state/getData";
     import { setPlanData } from "../../../scripts/state/plan/setPlanData";
+    import { setAddons } from "../../../scripts/state/addons/setAddons";
 
     // Form submit event
     const form = document.querySelector('form[name="plans-form"]');
@@ -157,6 +158,8 @@ const planCategory = "monthly";
         const switchPlan = document.querySelector('.switch-plan__input');
         data.category = switchPlan.checked ? 'yearly' : 'monthly';
         setPlanData(planData, data);
+        const addons = null;
+        setAddons(planData, addons);
 
         // Function to changes in sections
         nextStep(2);
