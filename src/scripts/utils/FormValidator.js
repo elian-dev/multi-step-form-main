@@ -21,7 +21,9 @@ export function FormValidator(formData, data) {
         RemoveError(errors, inputErrors);
     }
 
-    if (areEmptiesErrors) {
+    if (areEmptiesErrors.length > 0 ) {
+        console.log('There are empty inputs');
+
         // Identify the input group that has the error
         const emptyInputs = areEmptiesErrors.map((error) => {
             return document.querySelector(`[name="${error}"]`).parentElement;
@@ -32,28 +34,21 @@ export function FormValidator(formData, data) {
             AppendError(input, 'This field is required');
         });
 
-        // Identify the email inputs group
-        if (areEmailInputs.length > 0) {
-            areEmailInputs.forEach((input) => {
-                const inputName = input.getAttribute('name');
-                const inputParent = input.parentElement;
+    }  else {
+        console.log('There are no empty inputs');
+            // Append the error message if the email is invalid
+            const input = document.querySelector('input[type="email"]');
+            const inputParent = input.parentElement;
 
-                // Append the error message if the input is empty
-                if (areEmptiesErrors.includes(inputName)) {
-                    AppendError(inputParent, 'This field is required');
-                } else {
-                    // Append the error message if the email is invalid
-                    if (!IsValidEmail(input.value)) {
-                        AppendError(inputParent, 'Please enter a valid email address');
-                    } else {
-                        // ✨ Set the form data
-                        setFormData(state, data);
+            if (!IsValidEmail(input.value)) {
+                AppendError(inputParent, 'Please enter a valid email address');
+            } else {
+                // ✨ Set the form data
+                setFormData(state, data);
 
-                        // ✨ Go to the next step
-                        nextStep(1);
-                    }
-                }
-            });
-        }
+                // ✨ Go to the next step
+                nextStep(1);
+            }
+
     }
 }
