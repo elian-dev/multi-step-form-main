@@ -4,7 +4,7 @@ import Input from "./Input.astro";
 <section class="section form">
     <h2 class="form__title">Personal info</h2>
     <p class="form__legend">Please provide your name, email address, and phone number.</p>
-    <form class="form__section" method="POST" novalidate>
+    <form class="form__section" method="POST" name="userinfo-form" novalidate>
         <Input name="name" type="text" placeholder="e.g.Stephen king" label="Name" />
         <Input name="email" type="email" placeholder="e.g.stephenking@lorem.com" label="Email address" />
         <Input name="phone" type="number" placeholder="e.g.+1 234 567 890" label="Phone number" />
@@ -41,7 +41,7 @@ import Input from "./Input.astro";
 <script >
     import { FormValidator } from "../../../scripts/utils/FormValidator.js";
 
-    const form = document.querySelector('.form__section')
+    const form = document.querySelector('form[name="userinfo-form"]');
     
     form.addEventListener('submit', (e) => {
         e.preventDefault();

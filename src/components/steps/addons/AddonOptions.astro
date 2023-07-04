@@ -5,6 +5,8 @@
 <script>
     import { getData } from "../../../scripts/state/getData";
     import { getPlanData } from "../../../scripts/state/plan/getPlanData";
+    import { getAddons } from "../../../scripts/state/addons/getAddons";
+
     import data from "../../data.js";
     
     class AddonsOptions extends HTMLElement {
@@ -25,18 +27,32 @@
 
             const observer = new IntersectionObserver((entries, observer) => {
                 if (entries[0].isIntersecting) {
-                    console.log('AddonsOptions isIntersecting');
                     // Removing previous addons
                     this.clearInnerAddons();
 
                     // Getting actual data
                     const status = getData();
                     const planData = getPlanData(status);
-                    
+                    const addonsData = getAddons(status);
+
                     // Getting addons
                     addons = data.filter((item) => {
                         return item.id == planData.id;
                     });
+
+                    
+                    // If object is not empty
+                    if(addonsData !== null) {
+
+                        addons[0].addons.map((item) => {
+                            if(addonsData.includes(item.id.toString())) {
+                                item.checked = true;
+                            } else {
+                                item.checked = false;
+                            }
+                        })
+
+                    }
 
                     // Adding addons to the DOM
                     this.innerAddons(addons[0], planData.category);

@@ -18,7 +18,7 @@ export function setData() {
             },
 
             // Addons	
-            addonsSelected: []
+            addonsSelected: null
         }
     };
 
