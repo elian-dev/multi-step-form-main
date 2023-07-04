@@ -2,14 +2,6 @@
     <div class="addons__container" id="addons-container"></div>
 </addons-options>
 
-<style lang="scss">
-    .addons {
-        &__container {
-            max-width: 100%;
-        }
-    }
-</style>
-
 <script>
     import { getData } from "../../../scripts/state/getData";
     import { getPlanData } from "../../../scripts/state/plan/getPlanData";
@@ -18,13 +10,13 @@
     class AddonsOptions extends HTMLElement {
         constructor() {
             super();
+            console.log('AddonsOptions constructor');
             this.observerTarget();
         }
 
         observerTarget = () => {
             const options = {
                 root: document.querySelector('.main-card'),
-                rootMargin: '10px 0px', // like css property
                 threshold: 1.0
             }
 
@@ -33,7 +25,9 @@
             var addons = null;
 
             const observer = new IntersectionObserver((entries, observer) => {
+                console.log(entries[0].target.classList);
                 if (entries[0].isIntersecting) {
+                    console.log('AddonsOptions isIntersecting');
                     // Removing previous addons
                     this.clearInnerAddons();
 
