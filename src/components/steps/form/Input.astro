@@ -26,19 +26,22 @@ const { name, type, placeholder, label, value } = Astro.props;
 <script>
     const inputFields = document.querySelectorAll('.input__group__input');
 
-    // Add event listener to each input field
-    inputFields.forEach(input => {
-        input.addEventListener('focus', () => {
-            const sectionNextContainer = document.querySelector('.section__next--container');
-            sectionNextContainer.style.display = 'none';
-        });
+    // If screen width is less than 768px, remove focus event listener
+    if (window.innerWidth < 768) {
+        // Add event listener to each input field
+        inputFields.forEach(input => {
+            input.addEventListener('focus', () => {
+                const sectionNextContainer = document.querySelector('.section__next--container');
+                sectionNextContainer.style.display = 'none';
+            });
 
-        input.addEventListener('blur', () => {
-            const sectionNextContainer = document.querySelector('.section__next--container');
-            sectionNextContainer.style.display = 'flex';
+            input.addEventListener('blur', () => {
+                const sectionNextContainer = document.querySelector('.section__next--container');
+                sectionNextContainer.style.display = 'flex';
+            });
+            
         });
-        
-    });
+    }
 </script>
 
 <style lang="scss">
