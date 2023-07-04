@@ -94,7 +94,6 @@ const { title } = Astro.props;
 
 	main {
 		margin: auto;
-		padding: 1.5rem;
 		max-width: fit-content;
         height: 80vh;
         display: grid;
@@ -122,6 +121,8 @@ const { title } = Astro.props;
 		flex-direction: column;
 		padding: 2rem 5rem;
 		height: -webkit-fill-available;
+        width: 500px;
+        max-width: 500px;
 		&__next {
 			margin-left: auto;
 			padding: 0.5rem 1rem;
@@ -177,6 +178,8 @@ const { title } = Astro.props;
 
 		@media screen and (max-width: 500px) {
 			padding: 0;
+            width: auto;
+            max-width: 100%;
 		}
 	}
 
