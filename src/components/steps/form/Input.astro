@@ -42,6 +42,19 @@ const { name, type, placeholder, label, value } = Astro.props;
             
         });
     }
+
+    const inputName = document.querySelector('#name');
+
+    inputName.addEventListener('input', () => {
+        const inputNameValue = inputName.value;
+        
+        // Apply a regex to the input value in order to remove all numeric characters and special characters, except for spaces
+        const regex = /[^a-zA-Z\s]/g;
+        const inputNameValueClean = inputNameValue.replace(regex, '');
+        inputName.value = inputNameValueClean;
+
+    });
+    
 </script>
 
 <style lang="scss">

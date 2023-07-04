@@ -10,7 +10,6 @@
     class AddonsOptions extends HTMLElement {
         constructor() {
             super();
-            console.log('AddonsOptions constructor');
             this.observerTarget();
         }
 
@@ -25,7 +24,6 @@
             var addons = null;
 
             const observer = new IntersectionObserver((entries, observer) => {
-                console.log(entries[0].target.classList);
                 if (entries[0].isIntersecting) {
                     console.log('AddonsOptions isIntersecting');
                     // Removing previous addons
